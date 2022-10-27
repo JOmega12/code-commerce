@@ -11,3 +11,84 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* 
+.layout { 
+  background-color: #a464e3;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 50px;
+  border: wheat 2px solid;
+}
+
+
+.layout h1 {
+  color: white;
+}
+
+.form {
+  margin-right: 20px;
+}
+
+.ind-form {
+  margin: 25px 0px;
+  font-size: large;
+  font-weight: 500;
+} */
+
+/* .f-mail {
+  margin-right: 45px;
+} */
+
+/* .sign-up {
+  color:white;
+  background-color: #4e306c;
+  padding: 10px;
+  font-weight:800;
+  border-radius: 15px;
+  border: 2px #8350B5 solid;
+}
+
+.other-sign-in-container {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.sign-in {
+  border-radius: 10px;
+  padding: 0 5px 0 5px;
+  margin: 10px 0 10px 0;
+}
+
+.sign-in:hover {
+  cursor: pointer;
+}
+
+.sign-in div {
+  padding: 0;
+  margin: 0 5px 0 5px;
+}
+
+.facebook {
+  background-color: blue;
+  border: blue 2px solid;
+  color: white;
+}
+
+.other-si {
+  background-color: #ed3419;
+  border: #ed3419 2px solid;
+  color: white;
+}
+
+.other-si a{
+  text-decoration: none;
+}
+
+.other-si a h4 {
+  color:white;
+} */
+

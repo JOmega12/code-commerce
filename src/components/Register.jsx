@@ -1,7 +1,6 @@
 import React from 'react';
-
-
-
+import Login from './Login';
+import './css/formInput.css';
 
 class Register extends React.Component {
    constructor(props){
@@ -13,70 +12,113 @@ class Register extends React.Component {
          email: '',
          firstName: '',
          lastName: '',
-         isLoggedIn: true,
+         isLoggedIn: false,
 
       }
    }
 
-   handleName = ({target: {name, value}}) => {
+   handleChange = ({target: {name, value}}) => {
       this.setState({[name]: value})
    }
 
-
    onSubmit = (e) => {
       e.preventDefault();
+      
       console.log(e.target['name'].value)
    }
 
-
    render() {
 
-      // const{userName, password, email, firstName, lastName} = this.state;
+      const inputData = [
+         {label: 'First Name', name: 'firstName'},
+         {label: 'Last Name', name: 'lastName',},
+         {label: 'Email', name: 'email',},
+         {label: 'UserName', name: 'userName',},
+      ]
+
+      const togglePassword = document.querySelector("#togglePassword");
+      const password = document.querySelector("#password");
 
 
-      /* const inputData = [
-         {label: 'First Name', name: 'firstName', type: 'text'},
-         {label: 'Last Name', name: 'lastName', type: 'text'},
-         {label: 'Email', name: 'email', type: 'text'},
-         {label: 'UserName', name: 'username', type: 'text'},
-         {label: 'Password', name: 'password', type: 'text'},
-      ] */
+/*       togglePassword.addEventListener("click", function () {
+         // toggle the type attribute
+         const type = password.getAttribute("type") === "password" ? "text" : "password";
+         password.setAttribute("type", type);
+         
+         // toggle the icon
+         this.classList.toggle("bi-eye");
+     }); */
 
-      const leftTab = {
-         marginRight: '10px'
-      } 
+     // prevent form submit
+/*      const form = document.querySelector("form");
+     form.addEventListener('submit', function (e) {
+         e.preventDefault();
+     }); */
 
-      return(
-         <div style={{backgroundColor: '#a464e3'}}>
+
+
+
+      return this.state.isLoggedIn ? (
+         <Login/> 
+      ) : (
+         <div class="layout">
+   
+            <div class="border">
             <h1 >Register</h1>
             <form onSubmit={this.onSubmit}>
-            <label htmlFor="" className=''>First Name:</label>
-            <input type="text" name="name"/> <br/>
-            <label htmlFor="" className=''>Last Name:</label>
-            <input type="text" name="name"/><br/>
-            <label htmlFor="" className=''>Email:</label>
-            <input type="text" name="name"/><br/> 
-            <label htmlFor="" className=''>Username:</label>
-            <input type="text" name="name"/><br/>
-            <label htmlFor="" className=''>Password:</label>
-            <input type="text" name="name"/><br/>
-
-
-         <div class="other-sign-in"> 
-
-            <div>
-               <h4>Facebook</h4>
+   
+               {inputData.map(item => {
+                  const {label, name} = item;
+                     return (
+                        <>
+                        <div className="ind-form">
+                        <label htmlFor="">{label}: </label>
+                        <input
+                        name={name}
+                        onChange={this.handleChange}
+                        autoComplete="off"
+                        value={this.state[name]}
+                        type="text"
+                        />
+                        </div>
+                        </>
+                        )
+                     })
+                  }
+                  
+                  <div className="ind-form">
+                     <label htmlFor="">Password: </label>
+                     <input type="password"
+                        name='password'
+                        onChange={this.handleChange}
+                        autoComplete="off"
+                        value={this.state.password}
+                        id="password"
+                        />
+                     <i class="bi bi-eye-slash" id="togglePassword"></i>
+                  </div>
+   
+                  <button class="sign-up" value={this.isLoggedIn}>Sign Up</button>
+                  
+                  </form>
+   
+                  <div class="other-sign-in-container"> 
+                     <div class="sign-in facebook">
+                        <h4>Facebook</h4>
+                     </div>
+                     <div class="sign-in other-si">
+                        <a href="">
+                           <h4> Sign In</h4>
+                        </a>
+                     </div>
+                  </div>
+   
+               </div>
             </div>
-            <div>
-               <h4> Sign In</h4>
-            </div>
-         </div>
-         
-            </form>
-         </div>
       )
+
    }
 }
 
-
+//wheneveri dont toggle the function for password, the website dies
 export default Register;

@@ -1,5 +1,5 @@
 
-import './App.css';
+// import './App.css';
 import Register from './components/Register';
 /* import CustomerCard from './components/CustomerCard';
 import ShippingInfo from './components/ShippingInfo';
