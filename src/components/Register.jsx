@@ -13,6 +13,7 @@ class Register extends React.Component {
          firstName: '',
          lastName: '',
          isLoggedIn: false,
+         newUser: [],
 
       }
    }
@@ -21,11 +22,49 @@ class Register extends React.Component {
       this.setState({[name]: value})
    }
 
+
+   //this handles the signup request
    onSubmit = (e) => {
       e.preventDefault();
       
-      console.log(e.target['name'].value)
+      
+      const {userName, password, email, firstName, lastName} = this.state;
+      const newSignUp = {
+         userName: userName,
+         password: password,
+         email: email,
+         firstName: firstName,
+         lastName: lastName,
+         isLoggedIn: true,
+      }
+
+      this.setState( (state) => ({
+         newUser: [...state.newUser, newSignUp],
+         userName: '',
+         password: '',
+         email: '',
+         firstName: '',
+         lastName: '',
+         isLoggedIn: false,
+      }))
    }
+
+
+   //this takes care of the password visibility
+   onFunc = () => {
+      const togglePassword = document.querySelector("#togglePassword");
+      const password = document.querySelector("#password");
+
+      togglePassword.addEventListener("click", function () {
+         // toggle the type attribute
+         const type = password.getAttribute("type") === "password" ? "text" : "password";
+         password.setAttribute("type", type);
+         
+         // toggle the icon
+         this.classList.toggle("bi-eye");
+     });
+   }
+
 
    render() {
 
@@ -36,19 +75,6 @@ class Register extends React.Component {
          {label: 'UserName', name: 'userName',},
       ]
 
-      const togglePassword = document.querySelector("#togglePassword");
-      const password = document.querySelector("#password");
-
-
-/*       togglePassword.addEventListener("click", function () {
-         // toggle the type attribute
-         const type = password.getAttribute("type") === "password" ? "text" : "password";
-         password.setAttribute("type", type);
-         
-         // toggle the icon
-         this.classList.toggle("bi-eye");
-     }); */
-
      // prevent form submit
 /*      const form = document.querySelector("form");
      form.addEventListener('submit', function (e) {
@@ -56,10 +82,10 @@ class Register extends React.Component {
      }); */
 
 
-
-
       return this.state.isLoggedIn ? (
-         <Login/> 
+         <Login
+         newUser = {this.state.newUser}
+         /> 
       ) : (
          <div class="layout">
    
@@ -95,7 +121,9 @@ class Register extends React.Component {
                         value={this.state.password}
                         id="password"
                         />
-                     <i class="bi bi-eye-slash" id="togglePassword"></i>
+                     <i class="bi bi-eye-slash" id="togglePassword"
+                     onClick={()=>this.onFunc()}
+                     ></i>
                   </div>
    
                   <button class="sign-up" value={this.isLoggedIn}>Sign Up</button>
