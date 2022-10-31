@@ -1,15 +1,14 @@
 
 // import './App.css';
-import Register from './components/Register';
-/* import CustomerCard from './components/CustomerCard';
-import ShippingInfo from './components/ShippingInfo';
-import PaymentInfo from './components/PaymentInfo';
-import Confirm from './components/Confirm'; */
+
+import CodeCommerce from "./components/CodeCommerce";
+
+
 
 function App() {
   return (
     <div className="App">
-      <Register/>
+      <CodeCommerce />
       {/* <CustomerCard/>
       <ShippingInfo/>
       <PaymentInfo/>

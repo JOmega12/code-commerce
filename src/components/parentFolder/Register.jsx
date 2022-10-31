@@ -1,6 +1,4 @@
 import React from 'react';
-import Login from './Login';
-import './css/formInput.css';
 
 class Register extends React.Component {
    constructor(props){
@@ -12,16 +10,14 @@ class Register extends React.Component {
          email: '',
          firstName: '',
          lastName: '',
-         isLoggedIn: false,
+         isLoggedIn: true,
          newUser: [],
-
       }
    }
 
    handleChange = ({target: {name, value}}) => {
       this.setState({[name]: value})
    }
-
 
    //this handles the signup request
    onSubmit = (e) => {
@@ -65,6 +61,10 @@ class Register extends React.Component {
      });
    }
 
+   onLogin = () => {
+
+   }
+
 
    render() {
 
@@ -81,14 +81,8 @@ class Register extends React.Component {
          e.preventDefault();
      }); */
 
-
-      return this.state.isLoggedIn ? (
-         <Login
-         newUser = {this.state.newUser}
-         /> 
-      ) : (
+      return (
          <div class="layout">
-   
             <div class="border">
             <h1 >Register</h1>
             <form onSubmit={this.onSubmit}>
@@ -112,37 +106,37 @@ class Register extends React.Component {
                      })
                   }
                   
-                  <div className="ind-form">
-                     <label htmlFor="">Password: </label>
-                     <input type="password"
-                        name='password'
-                        onChange={this.handleChange}
-                        autoComplete="off"
-                        value={this.state.password}
-                        id="password"
-                        />
-                     <i class="bi bi-eye-slash" id="togglePassword"
-                     onClick={()=>this.onFunc()}
-                     ></i>
-                  </div>
-   
-                  <button class="sign-up" value={this.isLoggedIn}>Sign Up</button>
-                  
-                  </form>
-   
-                  <div class="other-sign-in-container"> 
-                     <div class="sign-in facebook">
-                        <h4>Facebook</h4>
-                     </div>
-                     <div class="sign-in other-si">
-                        <a href="">
-                           <h4> Sign In</h4>
-                        </a>
-                     </div>
-                  </div>
-   
+               <div className="ind-form">
+                  <label htmlFor="">Password: </label>
+                  <input type="password"
+                     name='password'
+                     onChange={this.handleChange}
+                     autoComplete="off"
+                     value={this.state.password}
+                     id="password"
+                     />
+                  <i class="bi bi-eye-slash" id="togglePassword"
+                  onClick={()=>this.onFunc()}
+                  ></i>
                </div>
+   
+               <button class="sign-up" value={this.isLoggedIn}>Sign Up</button>
+               
+            </form>
+   
+               <div class="other-sign-in-container"> 
+                  <div class="sign-in facebook">
+                     <h4>Facebook</h4>
+                  </div>
+                  <div class="sign-in other-si">
+                     <a href="">
+                        <h4> Sign In</h4>
+                     </a>
+                  </div>
+               </div>
+   
             </div>
+         </div>
       )
 
    }
