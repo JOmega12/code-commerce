@@ -1,16 +1,6 @@
 import React from 'react';
 
 class Login extends React.Component{
-   constructor(props) {
-      super(props)
-
-      this.state= {
-         userName: '',
-         password: '',
-         isLoggedIn: false,
-         isSignUp: false,
-      }
-   }
 
    //this sets the state
    handleChange = ({target: {name, value}}) => {
@@ -53,9 +43,9 @@ class Login extends React.Component{
                <label htmlFor="">Password: </label>
                <input type="password"
                   name='password'
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   autoComplete="off"
-                  value={this.state.password}
+                  value={this.props.password}
                   id="password"
                   />
                <i class="bi bi-eye-slash" id="togglePassword"
