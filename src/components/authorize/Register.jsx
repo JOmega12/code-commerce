@@ -42,7 +42,6 @@ class Register extends React.Component {
 
 
    //this checks if the user in the parent component has any emails going on
-   //this also reflects the validation error for jason's cc lesson
    checkIfUserExist = (email) => {
       return this.props.userData.filter(item => {
          return item.email === email
@@ -53,14 +52,18 @@ class Register extends React.Component {
    theSignUpFunc = (e) => {
       e.preventDefault();
 
+
+      //will this method of putting props in function to be used in render work? 
       this.props.signUpFunc();
+
+      // this.props.addUserToStateFunc();
    }
 
 
    render() {
 
 
-      const {userData, testUserData, addUserToStateFunc, handleChangeFunc, formErrorsState} = this.props
+      const {userData, handleChangeFunc, formErrorsState} = this.props
       const {firstName, lastName, email, userName, password, zipCode} = userData;
       //addUserToStateFunc could be in submitting 
 

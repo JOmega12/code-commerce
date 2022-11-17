@@ -3,21 +3,6 @@ import Authen from './authorize/Authen';
 // import Checkout from './checkout/Checkout';
 import '../components/css/formInput.css';
 
-   //pass user to authentication component to register component to local state and check if the current email exists 
-
-   //what I learned: when you create a function in the parent component, you can still use it in the child component through the use of props
-
-      //since you need data to the register component you need to compare the data 
-   //passing this prop from auth component to register component and login component
-   //now you can compare the typed email inside the register component  
-
-   //create a function that takes/adds an object and updates the state variables of users of adding a user
-      //first finish the register process then you will get the object of data that user has filled 
-      //check if email exists else add into the array from the function created from the parent component for users array
-      //for the login component under authentication you check/ update for isLoggedIn of another state variable
-
-   //this is what you must do first: build out your register component and have it's bells and whistles then figure out how to put the data from the register a new register 
-   //this adds the user to state if email is not the same from registering user
 
 const INIT_TEST = {
    email: 'test@test.com',
@@ -87,15 +72,15 @@ class CodeCommerce extends React.Component {
 
    handleInputData = (e) => {
       this.setState((prevState) => ({
-         newUser : {
-            ...prevState.newUser,
+         user : {
+            ...prevState.user,
             [e.target.name]: e.target.value,
          },
       }))
    }
  
 
-
+   //this is not showing up for the code in child component
    onSignUp = () => {
       
       const {userName, password, email, firstName, lastName, zipCode} = this.state.users;
@@ -123,12 +108,8 @@ class CodeCommerce extends React.Component {
    }
 
 
-   handleValidation = () => {
-
-   }
-
    //handling the submit form 
-   handleSubmit = (e) => {
+/*    handleSubmit = (e) => {
       e.preventDefault();
 
 
@@ -146,8 +127,10 @@ class CodeCommerce extends React.Component {
       } else {
          console.log(`Form invalid-- ERROR`)
       }
-   }
+   } */
 
+
+   //second handleChange that does validations
    handleChange2 = (e) => {
       e.preventDefault();
 
@@ -155,7 +138,6 @@ class CodeCommerce extends React.Component {
 
       let formErrors = this.state.formErrors;
 
-      //look at  devslopes lessons for more
       switch (name) {
          case 'firstName':
             formErrors.firstName = value.length < 6 && value.length > 0
@@ -192,8 +174,13 @@ class CodeCommerce extends React.Component {
             break;
       }
 
-      this.setState({formErrors, [name]: value}, () => console.log(this.state));
+
+      this.setState(
+         {formErrors, [name]: value}, 
+         () => console.log(this.state),
+      );
    }
+   
 
    render() {
       const {users, testUser, addUserToState, onSignUp, handleInputData,} = this.state
@@ -208,8 +195,10 @@ class CodeCommerce extends React.Component {
                   testUserData = {testUser}
                   addUserToStateFunc = {addUserToState}
                   signUpFunc = {onSignUp}
-                  // handleChangeFunc = {handleInputData}
-                  handleChangeFunc = {this.handleChange2}
+                  handleChangeFunc = {handleInputData}
+                  // handleChangeFunc = {this.handleChange2}
+
+
                   formErrorsState = {this.state.formErrors}
                />
 
