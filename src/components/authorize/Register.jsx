@@ -54,7 +54,8 @@ class Register extends React.Component {
 
 
       //will this method of putting props in function to be used in render work? 
-      this.props.signUpFunc();
+      // this.props.signUpFunc();
+      this.props.addUserToStateFunc(this.props.userData);
 
       // this.props.addUserToStateFunc();
    }
@@ -114,11 +115,9 @@ class Register extends React.Component {
                   type="text"
                   />
 
-                  
                   {formErrorsState.firstName.length > 0 && (
                      <span className='errorMessage'>{formErrorsState.firstName}</span>
                   )}
-
 
                </div>
                <div className="lastName">

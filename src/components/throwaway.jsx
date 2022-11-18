@@ -24,3 +24,28 @@ const inputData = [
                         )
                      })
                   } */}
+
+
+
+
+
+   //handling the submit form 
+/*    handleSubmit = (e) => {
+      e.preventDefault();
+
+
+      if (formValid(this.state.formErrors)) {
+         console.log( ` 
+         --submitting
+
+         firstName: ${this.state.users.firstName};
+         lastName: ${this.state.users.lastName};
+         email: ${this.state.users.email};
+         userName: ${this.state.users.userName};
+         password: ${this.state.users.password};
+         zipCode: ${this.state.users.zipCode};
+      `)
+      } else {
+         console.log(`Form invalid-- ERROR`)
+      }
+   } */

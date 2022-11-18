@@ -44,6 +44,7 @@ class CodeCommerce extends React.Component {
          isLoggedIn: false,
          testUser: INIT_TEST,
          users: newUser,
+         user: '',
          formErrors: {
             email: '',
             userName: '',
@@ -56,8 +57,9 @@ class CodeCommerce extends React.Component {
       }
    }
 
+   //add this to onclick/ submit button
    addUserToState = (obj) => {
-      const newArr = [...this.state.users];
+      const newArr = [...this.state.user];
       newArr.push(obj);
       this.setState((prevState) => ({
          ...prevState,
@@ -66,9 +68,6 @@ class CodeCommerce extends React.Component {
    }
 
 
-   handleChange = ({target: {name, value}}) => {
-      this.setState({[name]: value})
-   }
 
    handleInputData = (e) => {
       this.setState((prevState) => ({
@@ -107,27 +106,6 @@ class CodeCommerce extends React.Component {
       }))
    }
 
-
-   //handling the submit form 
-/*    handleSubmit = (e) => {
-      e.preventDefault();
-
-
-      if (formValid(this.state.formErrors)) {
-         console.log( ` 
-         --submitting
-
-         firstName: ${this.state.users.firstName};
-         lastName: ${this.state.users.lastName};
-         email: ${this.state.users.email};
-         userName: ${this.state.users.userName};
-         password: ${this.state.users.password};
-         zipCode: ${this.state.users.zipCode};
-      `)
-      } else {
-         console.log(`Form invalid-- ERROR`)
-      }
-   } */
 
 
    //second handleChange that does validations
@@ -183,7 +161,10 @@ class CodeCommerce extends React.Component {
    
 
    render() {
-      const {users, testUser, addUserToState, onSignUp, handleInputData,} = this.state
+      const {users, testUser, user} = this.state
+
+      //you need to be able to access the state of user and users in the child component
+      //because rn, you arent able to access this in the child component
 
       return (
 
@@ -192,10 +173,12 @@ class CodeCommerce extends React.Component {
 
                <Authen 
                   userData = {users}
+                  addUserData = {user}
                   testUserData = {testUser}
-                  addUserToStateFunc = {addUserToState}
-                  signUpFunc = {onSignUp}
-                  handleChangeFunc = {handleInputData}
+
+                  addUserToStateFunc = {this.addUserToState}
+                  signUpFunc = {this.onSignUp}
+                  handleChangeFunc = {this.handleInputData}
                   // handleChangeFunc = {this.handleChange2}
 
 
